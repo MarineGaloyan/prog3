@@ -13,9 +13,9 @@ module.exports = class GrassEater  extends LivingCreature {
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
-        console.log(emptyCells);
+      
         if (newCell && this.multiply >= 15) {
             var newX = newCell[0];
             var newY = newCell[1];

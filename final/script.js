@@ -3,20 +3,13 @@ var socket = io();
 
 let side = 20;
 
-
-// var grassArr = []
-// let grassEaterArr = []
-// let predatorArr = []
-// let predatoreatArr = []
-
 function setup() {
     frameRate(5);
     createCanvas(20* side, 20 * side);
     background('#acacac');
-  
 
 }
-function mkarel() {
+function mkarel(matrix) {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -47,28 +40,8 @@ function mkarel() {
         }
 
     }
-    setInterval(
-        function () {
-        socket.on('send matrix', nkarel)
-        },1000
-    )
-    
 
-    // for (var i in grassArr) {
-    //     grassArr[i].mul();
-    // }
-    // for (var i in grassEaterArr) {
-    //     grassEaterArr[i].mul()
-    //     grassEaterArr[i].eat()
-    // }
-    // for (var i in predatorArr) {
-    //     predatorArr[i].mul()
-    //     predatorArr[i].eat()
-    // }
-
-    // for (var i in predatoreatArr) {
-    //     predatoreatArr[i].mul()
-    //     predatoreatArr[i].eat()
-    // }
 
 }
+socket.on('send matrix', mkarel)
+

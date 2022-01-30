@@ -1,9 +1,9 @@
 let LivingCreature = require('./LivingCreature')
  
-module.exports = class Predatoreat extends LivingCreature {
+module.exports = class PredatorEat extends LivingCreature {
     constructor(x, y) {
         
-         super(x,y,index)
+         super(x,y)
       
        
        
@@ -12,15 +12,17 @@ module.exports = class Predatoreat extends LivingCreature {
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
-        console.log(emptyCells);
+        
+
+        // console.log(emptyCells);
         if (newCell && this.multiply >= 15) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 4;
 
-            var NewGrass = new Predatoreat (newX, newY);
+            var NewGrass = new PredatorEat (newX, newY);
             predatoreatArr.push(NewGrass);
             this.multiply = 0;
         }
@@ -32,7 +34,7 @@ module.exports = class Predatoreat extends LivingCreature {
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell && this.energy >= 0) {
-            console.log(newCell)
+            // console.log(newCell)
             var newX = newCell[0]
             var newY = newCell[1]
             matrix[newY][newX] = matrix[this.y][this.x]
