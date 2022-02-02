@@ -1,9 +1,9 @@
 let LivingCreature = require('./LivingCreature')
 
 module.exports = class Flower extends LivingCreature {
-        constructor(x, y, index) {
+        constructor(x, y) {
             
-            super(x,y,index)
+            super(x,y)
           
         
         }
