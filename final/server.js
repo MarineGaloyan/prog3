@@ -23,11 +23,11 @@ flowerArr = []
 matrix = [];
 
 var n = 50;
- Grass = require("./Grass")
- GrassEater = require("./GrassEater")
- Predator = require("./Predator")
- PredatorEat = require("./PredatorEat")
- Flower = require("./Flower")
+Grass = require("./Grass")
+GrassEater = require("./GrassEater")
+Predator = require("./Predator")
+PredatorEat = require("./PredatorEat")
+Flower = require("./Flower")
 
 
 
@@ -78,9 +78,9 @@ function ObjectCreator(matrix) {
     io.sockets.emit('send matrix', matrix);
 }
 
-function game (){
+function game() {
 
-for (var i in grassArr) {
+    for (var i in grassArr) {
         grassArr[i].mul();
     }
     for (var i in grassEaterArr) {
@@ -103,5 +103,47 @@ setInterval(game, 300);
 io.on('connection', function (socket) {
     ObjectCreator(matrix);
 })
+
+// statistika
+
+var statistics = {};
+
+setInterval(function () {
+    statistics.grass = grassArr.length;
+    statistics.grassEater = grassEaterArr.length;
+    statistics.predator = predatorArr.length;
+    statistics.predatoreat = predatoreatArr.length;
+    statistics.flower = flowerArr.length;
+    fs.writeFile("statistics.json", JSON.stringify(statistics), function () {
+        console.log("send")
+    })
+}, 1000)
+
+
+// knopkek
+
+function killflower() {
+    flowerArr = []
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix.length; x++) {
+            if (matrix[y][x] == 5) {
+
+                matrix[y][x] = 0
+            }
+
+
+        }
+
+    }
+    io.sockets.emit("send matrix", matrix)
+}
+
+io.on('connection', function (socket) {
+    
+    socket.on("killflower", killflower);
+
+});
+
+
 
 

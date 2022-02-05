@@ -6,10 +6,10 @@ let side = 20;
 function setup() {
     frameRate(5);
     createCanvas(20* side, 20 * side);
-    background('#acacac');
+    background("blue");
 
 }
-function mkarel(matrix) {
+function nkarel(matrix) {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -43,5 +43,9 @@ function mkarel(matrix) {
 
 
 }
-socket.on('send matrix', mkarel)
+socket.on('send matrix', nkarel)
 
+
+function killflower() {
+    socket.emit("killflower")
+}

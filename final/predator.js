@@ -11,7 +11,7 @@ module.exports = class Predator extends LivingCreature {
 
     mul() {
         this.multiply++;
-        var emptyCells = this.chooseCell(0);
+        var emptyCells = this.chooseCell(0);       
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell && this.multiply >= 15) {
