@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require("fs");
+const PredatorEat = require('./PredatorEat');
 
 
 app.use(express.static("."));
@@ -26,7 +27,7 @@ var n = 50;
 Grass = require("./Grass")
 GrassEater = require("./GrassEater")
 Predator = require("./Predator")
-PredatorEat = require("./PredatorEat")
+Predatoreat = require("./Predatoreat")
 Flower = require("./Flower")
 
 
@@ -143,6 +144,45 @@ io.on('connection', function (socket) {
     socket.on("killflower", killflower);
 
 });
+
+function predatorshow(){
+     predatorArr = []
+for (  var y = 0;  y < matrix.length; y++) {
+    for (var x = 0; x < matrix.length;  x++) {
+      if(matrix[y][x]== 0){
+
+      matrix[y][x]= 3
+      }
+        
+    }
+    
+}
+
+io.sockets.emit("send matrix", matrix)
+
+}
+
+io.on('connection', function (socket) {
+    
+    socket.on("predatorshow", predatorshow);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,4 @@
-var socket = io();
-
-
+let socket = io();
 let side = 20;
 
 function setup() {
@@ -49,3 +47,9 @@ socket.on('send matrix', nkarel)
 function killflower() {
     socket.emit("killflower")
 }
+
+function predatorshow() {
+    socket.emit("predatorshow")
+}
+
+
