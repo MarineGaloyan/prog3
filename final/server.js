@@ -170,6 +170,29 @@ io.on('connection', function (socket) {
 
 
 
+function attendpredatoreat() {
+    for (var i = 0; i < 7; i++) {   
+    var x = Math.floor(Math.random() * matrix[0].length)
+    var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+            predatoreatArr.push(new Predatoreat(x, y, 2))
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+io.on('connection', function (socket) {
+
+    socket.on("attendpredatoreat", attendpredatoreat);
+
+});
+
+
+
+
+
+
+
 
 
 

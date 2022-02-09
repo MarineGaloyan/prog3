@@ -52,4 +52,7 @@ function predatorshow() {
     socket.emit("predatorshow")
 }
 
+function attendpredatoreat(){
+    socket.emit("attendpredatoreat")
+}
 
